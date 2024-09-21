@@ -25,14 +25,11 @@ namespace MonitorLightController
         public SettingsWindow()
         {
             InitializeComponent();
-            // ウィンドウをトレイアイコンの近くに表示するロジックを追加できます
             this.Loaded += SettingsWindow_Loaded;
         }
 
         private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            // システムトレイの位置を取得してウィンドウを配置
-            // ここでは簡単のため画面の右下に表示
             var workingArea = SystemParameters.WorkArea;
             this.Left = workingArea.Right - this.Width - 350;
             this.Top = workingArea.Bottom - this.Height - 60;

@@ -25,8 +25,6 @@ namespace MonitorLightController
             try
             {
                 await _client.ConnectAsync(new Uri("ws://m5stamp.local:443"), CancellationToken.None);
-
-                // 現在値を取得
                 await ReceiveParameterAsync();
 
             }
