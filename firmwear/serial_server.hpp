@@ -14,10 +14,8 @@ namespace casey
     public:
         using request_handler_t = std::string (*)(const std::string&);
 
-        serial_server(uint16_t port)
-            : websocket(port)
-        {
-        }
+        serial_server()
+        {}
 
         void begin(request_handler_t handler)
         {

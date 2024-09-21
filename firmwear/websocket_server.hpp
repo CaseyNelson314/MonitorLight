@@ -52,10 +52,11 @@ namespace casey
         {
             request_handler = handler;
             websocket.begin();
-            websocket.onEvent([this](uint8_t /*socket_id*/, WStype_t type, uint8_t* payload, size_t length)
+            websocket.onEvent([this](uint8_t socket_id, WStype_t type, uint8_t* payload, size_t length)
                               {
                                 if (type == WStype_TEXT) {
-                                    this->request_handler(std::string{ (char*)payload, length });
+                                    const auto res = this->request_handler(std::string{ (char*)payload, length });
+                                    websocket.sendTXT(socket_id, res.c_str());
                                 } });
         }
 
@@ -66,5 +67,6 @@ namespace casey
 
     private:
         WebSocketsServer websocket;
+        request_handler_t request_handler;
     };
 }    // namespace casey

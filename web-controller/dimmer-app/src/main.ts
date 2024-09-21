@@ -7,20 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const kelvinSlider = document.getElementById('kelvin');
   const kelvinValue = document.getElementById('kelvinValue');
 
-  socket.onopen = function () {
-    console.log('WebSocket connection opened.');
-  };
-
   brightnessSlider?.addEventListener('input', function () {
     const brightness = brightnessSlider.value;
     brightnessValue.textContent = brightness;
-    socket.send("w " + brightness + " " + kelvinValue.textContent);
+    socket.send("w " + brightness + " " + kelvinValue?.textContent);
   });
 
-  kelvinSlider.addEventListener('input', function () {
+  kelvinSlider?.addEventListener('input', function () {
     const kelvin = kelvinSlider.value;
     kelvinValue.textContent = kelvin;
-    socket.send("w " + brightnessSlider.value + " " + kelvin);
+    socket.send("w " + brightnessSlider?.value + " " + kelvin);
   });
 
   socket.onmessage = function (event) {
