@@ -6,25 +6,30 @@ IoT monitor light bar. Dimmable via websocket or USB.
 
 ## Feature
 
+<details>
+<summary> <code>./cad</code> 3D data (STL) of 3D printer parts </summary>
 
+- Developed with Autodesk Fusion 360
+
+</details>
 
 <details>
 <summary> <code>./firmware</code> Firmware running on M5StampC3U, responsible for driving neopixel LEDs and communication server. </summary>
 
-( ^^) _U~~
+- Developed with Arduino IDE
+
+- Board URL : <https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/arduino/package_m5stack_index.json>
 
 </details>
-
-
 
 <details>
 <summary> <code>./native-controller</code> Resident dimming application for windows made by WPF (C#). </summary>
 
-![image](https://github.com/user-attachments/assets/f6d99cbc-5925-4aea-83dc-fb5290400b21)
+- Developed with Visual Studio
+
+  ![image](https://github.com/user-attachments/assets/f6d99cbc-5925-4aea-83dc-fb5290400b21)
 
 </details>
-
-
 
 <details>
 <summary> <code>./web-controller</code> Dimming application via browser. </summary>
@@ -36,12 +41,10 @@ cd ./MonitorLight/web-controller/src/
 npm install
 npm run dev
 ```
-  
+
 ![image](https://github.com/user-attachments/assets/11dbccd9-787b-4c1a-9d81-6ced88464ddc)
 
 </details>
-
-
 
 ## Communication path via websocket
 
