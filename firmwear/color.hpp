@@ -1,5 +1,5 @@
 //
-//   色空間
+//   color space
 //
 //   copyright (c) 2024 okawa yusuke
 //
@@ -12,7 +12,7 @@ namespace casey
 {
 
     /**
-     * @brief RGB 色空間
+     * @brief RGB color space
      */
     struct rgb
     {
@@ -28,7 +28,7 @@ namespace casey
         }
 
         /**
-         * @brief 色温度->RGB
+         * @brief kelvin -> RGB
          * @link https://github.com/mattdesl/kelvin-to-rgb/blob/master/index.js
          */
         static rgb from_kelvin(double kelvin)
@@ -36,7 +36,6 @@ namespace casey
             double temp = kelvin / 100.0;
             double r, g, b;
 
-            // 赤の計算
             if (temp <= 66.0)
             {
                 r = 255;
@@ -48,7 +47,6 @@ namespace casey
                 r = constrain(r, 0.0, 255.0);
             }
 
-            // 緑の計算
             if (temp <= 66.0)
             {
                 g = temp;
@@ -62,7 +60,6 @@ namespace casey
                 g = constrain(g, 0.0, 255.0);
             }
 
-            // 青の計算
             if (temp >= 66.0)
             {
                 b = 255;
@@ -78,7 +75,6 @@ namespace casey
                 b = constrain(b, 0.0, 255.0);
             }
 
-            // ガンマ補正を適用
             return {
                 static_cast<uint8_t>(Adafruit_NeoPixel::gamma8(r)),
                 static_cast<uint8_t>(Adafruit_NeoPixel::gamma8(g)),

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>M5Stamp Monitor Light Control</title>
+</head>
+
+<body>
+  <label for="brightness">輝度: <span id="brightnessValue">128</span></label>
+  <br>
+  <input type="range" id="brightness" name="brightness" min="0" max="255" value="128">
+
+  <br>
+
+  <label for="kelvin">色温度[K]: <span id="kelvinValue">8000</span></label>
+  <br>
+  <input type="range" id="kelvin" name="kelvin" min="2000" max="12000" value="8000">
+
+  <script>
+    const socket = new WebSocket('ws://m5stamp.local:443');
+    const brightnessSlider = document.getElementById('brightness');
+    const brightnessValue = document.getElementById('brightnessValue');
+    const kelvinSlider = document.getElementById('kelvin');
+    const kelvinValue = document.getElementById('kelvinValue');
+
+    socket.onopen = function () {
+      console.log('WebSocket connection opened.');
+    };
+
+    brightnessSlider.addEventListener('input', function () {
+      const brightness = this.value;
+      brightnessValue.textContent = brightness;
+      socket.send("w " + brightness + " " + kelvinValue.textContent);
+    });
+
+    kelvinSlider.addEventListener('input', function () {
+      const kelvin = this.value;
+      kelvinValue.textContent = kelvin;
+      socket.send("w " + brightnessSlider.value + " " + kelvin);
+    });
+
+    socket.onmessage = function (event) {
+      console.log(event.data);
+    };
+    
+  </script>
+</body>
+
+</html>
