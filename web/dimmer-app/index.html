@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M5Stamp Monitor Light Control</title>
+  </head>
+  <body>
+    <label for="brightness">輝度: <span id="brightnessValue">128</span></label>
+    <br>
+    <input type="range" id="brightness" name="brightness" min="0" max="255" value="128">
+    <br>
+  
+    <label for="kelvin">色温度[K]: <span id="kelvinValue">8000</span></label>
+    <br>
+    <input type="range" id="kelvin" name="kelvin" min="2000" max="12000" value="8000">
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
