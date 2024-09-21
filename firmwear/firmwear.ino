@@ -8,13 +8,16 @@
 #include <Preferences.h>
 #include "light.hpp"
 #include "websocket_server.hpp"
+#include "serial_server.hpp"
 #include "key.hpp"
 
 static int brightness;
 static int kelvin;
 
 static casey::light light{ /*nLED = */ 13 , /*nPin = */ 10 };
-static casey::websocket_server websocket{ /*port = */ 443 };
+
+static casey::websocket_server websocket_server{ /*port = */ 443 };
+static casey::serial_server serial_server;
 
 static Preferences preferences;
 
@@ -101,13 +104,15 @@ void setup()
     casey::begin_mdns("m5stamp");
 
     light.begin();
-    websocket.begin(on_request);
+    websocket_server.begin(on_request);
+    serial_server.begin(on_request);
 }
 
 
 void loop()
 {
-    websocket.update();
+    websocket_server.update();
+    serial_server.update();
     light.update(brightness, kelvin);
     delay(10);
 }
