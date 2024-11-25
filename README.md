@@ -1,6 +1,10 @@
+<div aling="center">
+
 # 💡 MonitorLight 💡
 
 IoT monitor light bar. Dimmable via websocket or USB.
+
+</div>
 
 ![あああああ](https://github.com/user-attachments/assets/a6d9a29a-fd81-46ff-a85a-2eee5cd1c9b3)
 
